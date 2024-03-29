@@ -1,17 +1,14 @@
-import logo from "./logo.svg";
-import "./App.css";
-import axios from "axios";
-import { useEffect } from "react";
+import logo from './logo.svg';
+import './App.css';
+import axios from 'axios';
 
-const neowsapi = () => {
+const Neowsapi = () => {
   const [ast, setAst] = useState([]);
 
   useEffect(() => {
     const getAst = async () => {
-      const response = await axios.get(
-        `https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.API_KEY}`
-      );
-      setAst(resp.data.near_earth_objects);
+      const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.API_KEY}`);
+      setAst(response.data.near_earth_objects);
     };
     getAst();
   }, []);
@@ -31,7 +28,7 @@ const neowsapi = () => {
           </tr>
         </thead>
         <tbody>
-          {asteroids.map((asteroid, index) => (
+          {ast.map((asteroid, index) => (
             <tr key={index}>
               <td>{asteroid.name}</td>
               <td>{asteroid.close_approach_data[0].miss_distance.km}</td>
@@ -42,6 +39,6 @@ const neowsapi = () => {
       </table>
     </div>
   );
-};
+}
 
-export default neowsapi;
+export default Neowsapi;
