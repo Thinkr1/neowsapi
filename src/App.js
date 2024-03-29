@@ -1,18 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-import axios from "axios"
-import { useEffect } from 'react';
+import logo from "./logo.svg";
+import "./App.css";
+import axios from "axios";
+import { useEffect } from "react";
 
 const neowsapi = () => {
-  const [ast, setAst] = useState([])
+  const [ast, setAst] = useState([]);
 
   useEffect(() => {
     const getAst = async () => {
-      const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.API_KEY}`)
-      setAst(resp.data.near_earth_objects)
-    }
-    getAst()
-  }, [])
+      const response = await axios.get(
+        `https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.API_KEY}`
+      );
+      setAst(resp.data.near_earth_objects);
+    };
+    getAst();
+  }, []);
 
   return (
     <div className="App">
@@ -39,8 +41,7 @@ const neowsapi = () => {
         </tbody>
       </table>
     </div>
-  )
+  );
+};
 
-}
-
-export default App;
+export default neowsapi;
