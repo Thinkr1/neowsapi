@@ -9,8 +9,13 @@ const neowsapi = () => {
   useEffect(() => {
     const getAst = async () => {
       const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.API_KEY}`)
+      setAst(resp.data.near_earth_objects)
     }
-  })
+    getAst()
+  }, [])
+
+  
+
 }
 
 export default App;
